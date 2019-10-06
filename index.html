@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			
+		}
+		body{
+			background-color: #EFEFEF;
+		}
+		#main{
+			position: fixed;
+			width: 99%;
+			height: 10vh;
+			left: 50%;
+			transform: translate(-50%);
+			margin-top: 1vh;
+			border-radius: 10px;
+			background-color: #343a40;
+			padding-left: 3px;
+			padding-right: 3px;
+			text-align: center;
+			font-size: 4vh;
+			color: white;
+			
+ 			
+
+		}
+		.day::before{
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			border: 10px solid transparent; border-right: 10px solid  #EFEFEF; border-bottom: 10px solid  #EFEFEF;
+			transform: rotate(180deg);
+		}
+		.day::after{
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			border: 10px solid transparent; border-right: 10px solid #c19c13; border-bottom: 10px solid #c19c13;
+			
+		}
+		.day{
+			position: relative;
+			box-sizing: border-box;
+			color: black;
+			float: left;
+			width: 25%;
+			height: 35vh;
+			background-color: #FECA00;
+			border: 1px solid  #EFEFEF;
+			font-size: 3vh;
+
+			
+		}
+		
+
+		.btn{
+			position: absolute;
+			bottom:  5px;
+			right: 1px;
+			color: black;
+			background-color: #fff;
+			background-color: #FECA00;
+			width: 7vh;
+			height: 7vh;
+			border: none;
+			text-align: center;
+			font-size: 6vh;
+			border-radius: 50%;
+			
+			
+		}
+		.btn2{
+			position: absolute;
+			visibility: hidden;
+			color: black;
+			bottom:  11px;
+			right: 11px;
+			background-color: #fff;
+			background-color: #FECA00;
+			width: 7vh;
+			height: 7vh;
+			border: none;
+			text-align: center;
+			font-size: 6vh;
+			
+			
+		}
+		
+		.input{
+			position: absolute;
+			bottom: 5%;
+			left: 3%;
+
+		}
+		.inputOfText{
+			visibility: hidden;
+			border: none;
+			height: 5vh;
+		    line-height: 5vh;
+		    font-size: 2vh;
+		    width: 40vw;
+		    padding: 7px;
+		    float: left;
+		    
+		    
+		}
+		.addBtn {
+			visibility: hidden;
+		    height: 5vh;
+		    line-height: 5vh;
+		    width: 25vw;
+		    background: #d9d9d9;
+		    color: black;
+		    float: left;
+		    text-align: center;
+		   	font-size: 3vh;
+		    cursor: pointer;
+		    
+		}
+
+		.addBtn:hover {
+		    background-color: #bbb;
+		}
+		.listOfToDo{
+			width: 97%;
+			margin: 0 auto;
+			height: 20vh;
+			background-color: inherit;
+			overflow-y: auto;
+			font-size: 2vh;
+			
+		}
+		ul {
+		    margin: 0;
+		    padding: 0;
+		    list-style: none;
+		}
+
+		ul li {
+		    cursor: pointer;
+		    position: relative;
+		    padding: 12px 0px 12px 0px;
+			
+		    color: black;
+		    background: #FECA00;
+		    line-height: 3vh;
+		    
+		    
+		    -webkit-user-select: none;
+		    -moz-user-select: none;
+		    -ms-user-select: none;
+		    user-select: none;
+		    border-radius: 5px;
+		    border: 1px solid white;
+		}
+
+		ul li:nth-child(odd) {
+
+		    background: #FECA00;
+		}
+
+		ul li:hover {
+		    background: #ddd;
+		}
+
+		ul li.checked {
+		    
+		    border: 1px solid  #00ff19;
+		    text-decoration: line-through;
+		    background-color: #fff;
+		}
+		ul li.checked::before {
+		    content: '';
+		    position: absolute;
+		    border-color: #00ff19;
+		    border-style: solid;
+		    border-width: 0 2px 2px 0;
+		    top: 5px;
+		    left: 10px;
+		    transform: rotate(45deg);
+		    height: 5px;
+		    width: 2.5px;
+
+		}
+		.close {
+		    position: absolute;
+		    right: 0;
+		    top: 0;
+		    padding: 12px 16px 12px 16px;
+		    border-radius: 5px;
+		}
+
+		.close:hover {
+		    background-color: #f44336;
+		    color: white;
+
+		}
+		.statistics{
+			display: none;
+			z-index: -1111;
+			visibility: hidden;
+			margin-bottom: 10px;
+
+		}
+		#warningOfDeleleAllInformation{
+			position: absolute;
+			display: none;
+			z-index: -1111;
+			visibility: hidden;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			width: 98vw;
+			height: 80vh;
+			background-color: #FF0000;
+			text-align: center;
+			padding-top: 25vh;
+			border-radius: 10px;
+			color: white;
+			font-size: 4vh;
+		}
+		#warningOfDeleleAllInformation button{
+			
+			margin: 5vh 5vh;
+			border: none;
+			background-color: #db0000;
+			font-size: 100%;
+			color: white;
+		}
+		#divOfLanguage{
+			position: absolute;
+			display: none;
+			z-index: -1111;
+			visibility: hidden;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			width: 98vw;
+			height: 80vh;
+			background-color: #c19c13;
+			text-align: center;
+			
+			border-radius: 10px;
+			color: white;
+			
+		}
+		.divOfChoose{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%)
+		}
+		.pForLanguage{
+			margin-bottom: 20px;
+			font-size: 4vh;
+		}
+		#Menu{
+			line-height: 4vh;
+			font-size: 2.5vh;
+		}
+		#divOfBeginNewWeek{
+			position: absolute;
+			display: none;
+			z-index: -1111;
+			visibility: hidden;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			width: 98vw;
+			height: 80vh;
+			background-color: #c19c13;
+			text-align: center;
+			padding-top: 25vh;
+			border-radius: 10px;
+			color: white;
+			font-size: 4vh;
+		}
+		
+		#divOfBeginNewWeek button{
+			
+			margin: 5vh 5vh;
+			border: none;
+			background-color: #c19c13;
+			font-size: 100%;
+			color: white;
+		}
+		#tree{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			color: #F8F3F5;
+			background-color: #3bff00;
+			border-radius: 30%;
+			padding: 0px 2px 2px 2px; 
+			display: none;
+		}
+		.day h3 span {
+			display: none;
+		}
+		
+
+	</style>
+</head>
+<body>
+	<div id="warningOfDeleleAllInformation">
+		
+			<h2 class="Warning">Are you sure?</h2>
+
+			<button id="deleteAllYes">Yes</button> <button id="deleteAllNo">No</button>
+		
+	</div>
+	<div id="divOfLanguage">
+		<div class='divOfChoose'>
+			<p class="pForLanguage" id="russian">Russian</p>
+			
+			<p class="pForLanguage" id="english">English</p>
+			
+			<p class="pForLanguage" id="chinese">Chinese</p>
+		</div>
+	</div>
+	<div id="divOfBeginNewWeek">
+		
+			<h2 class="Warning">Are you sure?</h2>
+			<button id="beginNewWeekYes">Yes</button> <button id="beginNewWeekNo">No</button>
+		
+	</div>
+
+	<div  id="main">
+		<h2 id="NameOfApp">Do it now</h2>
+		<div class="day" id="day1">
+			<h3 id="Monday">Mo<span class="hide">nday</span></h3>
+			<div class="listOfToDo">
+				<ul  id="list">
+					
+	   			 </ul>
+   			 </div>
+			<div class="input">
+	   			<input class="inputOfText" type="text" placeholder="Type here..." id="toDoEl">
+				<span class="addBtn" onclick="newElement()">Click</span>
+			</div>
+			<button class="btn">&#9998;</button>
+			<button class="btn2">&#9745;</button>
+			
+		</div>
+		<div class="day" id="day2">
+			<h3 id="Tuesday">Tu<span class="hide">sday</span></h3>
+			<div class="listOfToDo">
+				<ul  id="listOfTuesday">
+					
+	   			 </ul>
+   			 </div>
+			<div class="input">
+	   			<input class="inputOfText" type="text" placeholder="Type here..." id="toDoElOfTuesday">
+				<span class="addBtn" onclick="newElementOfTuesday()">Click</span>
+			</div>
+			<button class="btn">&#9998;</button>
+			<button class="btn2">&#9745;</button>
+		</div>
+		<div class="day" id="day3">
+			<h3 id="Wednesday">We<span class="hide">dnesday</span></h3>
+			<div class="listOfToDo">
+				<ul  id="listOfWednesday">
+					
+	   			 </ul>
+   			 </div>
+			<div class="input">
+	   			<input class="inputOfText" type="text" placeholder="Type here..." id="toDoElOfWednesday">
+				<span class="addBtn" onclick="newElementOfWednesday()">Click</span>
+			</div>
+			<button class="btn">&#9998;</button>
+			<button class="btn2">&#9745;</button>
+		</div>
+		<div class="day" id="day4">
+			<h3 id="Thursday">Th<span class="hide">ursday</span></h3>
+			<div class="listOfToDo">
+				<ul  id="listOfThursday">
+					
+	   			 </ul>
+   			 </div>
+			<div class="input">
+	   			<input class="inputOfText" type="text" placeholder="Type here..." id="toDoElOfThursday">
+				<span class="addBtn" onclick="newElementOfThursday()">Click</span>
+			</div>
+			<button class="btn">&#9998;</button>
+			<button class="btn2">&#9745;</button>
+		</div>
+		<div class="day" id="day5">
+			<h3 id="Friday">Fr<span class="hide">iday</span></h3>
+			<div class="listOfToDo">
+				<ul  id="listOfFriday">
+					
+	   			 </ul>
+   			 </div>
+			<div class="input">
+	   			<input class="inputOfText" type="text" placeholder="Type here..." id="toDoElOfFriday">
+				<span class="addBtn" onclick="newElementOfFriday()">Click</span>
+			</div>
+			<button class="btn">&#9998;</button>
+			<button class="btn2">&#9745;</button>
+		</div>
+		<div class="day" id="day6">
+			<h3 id="Saturday">Sa<span class="hide">turday</span></h3>
+			<div class="listOfToDo">
+				<ul  id="listOfSaturday">
+					
+	   			 </ul>
+   			 </div>
+			<div class="input">
+	   			<input class="inputOfText" type="text" placeholder="Type here..." id="toDoElOfSaturday">
+				<span class="addBtn" onclick="newElementOfSaturday()">Click</span>
+			</div>
+			<button class="btn">&#9998;</button>
+			<button class="btn2">&#9745;</button>
+		</div>
+		<div class="day" id="day7">
+			<h3 id="Sunday">Su<span class="hide">nday</span></h3> 
+			<div class="listOfToDo">
+				<ul  id="listOfSunday">
+					
+	   			 </ul>
+   			 </div>
+			<div class="input">
+	   			<input class="inputOfText" type="text" placeholder="Type here..." id="toDoElOfSunday">
+				<span class="addBtn" onclick="newElementOfSunday()">Click</span>
+			</div>
+			<button class="btn">&#9998;</button>
+			<button class="btn2">&#9745;</button>
+		</div>
+		<div class="day" id="day8">
+			<h3 id="Menu">Menu</h3>
+			<div id="tree">&#10048;</div>
+			<div class="listOfToDo">
+
+				<ol id="ulOfStatistics">
+					<li class="statistics" ><span id="NumberOfCompletedTasks">Number of completed tasks: </span><ins id='numberOfCheckedToDo'></ins> </li> 
+					<li  class="statistics" id="beginNewWeek">Begin new week</li>
+					<li  class="statistics" id="deleteAll" >Delete all information</li>
+					<li class="statistics" id="language">Language</li>
+				</ol>
+			</div>
+			<br>
+			<button class="btn">&#9998;</button>
+			<button class="btn2">&#9745;</button>
+		</div>
+	</div>
+	<script>
+
+		//Add Data to LocalStorage
+		var todos;
+        function toLocal() {
+          todos = document.getElementById('list').innerHTML;
+          localStorage.setItem("todos", todos);
+        };
+
+        var todosOfTuesday;
+        function toLocalOfTuesday() {
+          todosOfTuesday = document.getElementById('listOfTuesday').innerHTML;
+          localStorage.setItem("todosOfTuesday", todosOfTuesday);
+        };
+		var todosOfWednesday;
+        function toLocalOfWednesday() {
+          todosOfWednesday = document.getElementById('listOfWednesday').innerHTML;
+          localStorage.setItem("todosOfWednesday", todosOfWednesday);
+        };
+        var todosOfThursday;
+        function toLocalOfThursday() {
+          todosOfThursday = document.getElementById('listOfThursday').innerHTML;
+          localStorage.setItem("todosOfThursday", todosOfThursday);
+        };
+        var todosOfFriday;
+        function toLocalOfFriday() {
+          todosOfFriday = document.getElementById('listOfFriday').innerHTML;
+          localStorage.setItem("todosOfFriday", todosOfFriday);
+        };
+        var todosOfSaturday;
+        function toLocalOfSaturday() {
+          todosOfSaturday = document.getElementById('listOfSaturday').innerHTML;
+          localStorage.setItem("todosOfSaturday", todosOfSaturday);
+        };
+        var todosOfSunday;
+        function toLocalOfSunday() {
+          todosOfSunday = document.getElementById('listOfSunday').innerHTML;
+          localStorage.setItem("todosOfSunday", todosOfSunday);
+        };
+        var statistics;
+        function toLocalOfStatistics() {
+          statistics = NumberOfChecked;
+          localStorage.setItem("statistics", statistics);
+        };
+        var languageOfSistem;
+        function toLocalOfLanguage(){
+        	languageOfSistem = flagOfLanguage;
+        	
+        	localStorage.setItem("languageOfSistem", languageOfSistem)
+        }
+        //Change CSS 
+		var main = document.querySelector('#main');
+		main.addEventListener('click', function (ev) {
+		    if(ev.target.classList.contains("btn")) {
+		    	var day = document.getElementsByClassName('day');
+				for (var i = 0; i < day.length; i++) {
+					day[i].style.cssText =
+				`
+				
+				visibility: hidden;
+				display: none;
+				
+				`
+				;}
+		       ev.target.parentElement.style.cssText =
+				`
+				
+				
+				z-index: 2;
+				width: 100%;
+				height: 80vh;
+
+				`;
+				ev.target.style.cssText =
+				`
+				position: absolute;
+				z-index: -111;
+				visibility: hidden;
+				
+				`;
+				var statisticsOfToDo = document.getElementsByClassName('statistics');
+				for (var i = 0; i < statisticsOfToDo.length; i++) {
+					statisticsOfToDo[i].style.cssText =
+				`
+				
+				display: block;
+				z-index: 1111;
+				visibility: visible;
+				
+				`
+				;}
+				var hide = document.getElementsByTagName("span");
+				for (var i = 0; i < hide.length; i++){
+					hide[i].style.cssText =
+					`
+					display: inline;
+					`;
+				}
+				var btn2 = document.getElementsByClassName('btn2');
+				for (var i = 0; i < btn2.length; i++) {
+					btn2[i].style.cssText =
+				`
+				
+				visibility: visible;
+				
+				`
+				;}
+				var inputOfText = document.getElementsByClassName('inputOfText');
+				for (var i = 0; i < inputOfText.length; i++) {
+					inputOfText[i].style.cssText =
+				`
+				
+				visibility: visible;
+				
+				`
+				;}
+				var addBtn = document.getElementsByClassName('addBtn');
+				for (var i = 0; i < addBtn.length; i++) {
+					addBtn[i].style.cssText =
+				`
+				
+				visibility: visible;
+				
+				`
+				;}
+				var listOfToDo = document.getElementsByClassName('listOfToDo');
+				for (var i = 0; i < listOfToDo.length; i++) {
+					listOfToDo[i].style.cssText =
+				`
+				
+				height: 45vh;
+				font-size: 3vh;
+				
+				`
+				;}
+				var close = document.getElementsByClassName('close');
+				for (var i = 0; i < close.length; i++) {
+					close[i].style.cssText =
+				`
+				
+				visibility: visible;
+				
+				`
+				;}
+
+				
+				
+		    } 
+		}, false);
+		
+		main.addEventListener('click', function (ev) {
+			if(ev.target.classList.contains("btn2")) {
+				ev.target.parentElement.style.cssText =
+				`
+				position: relative;
+				z-index: auto;
+				width: 25%;
+				height: 38vh;
+				transition: .2s;
+				`;
+				var btn = document.getElementsByClassName('btn');
+				for (var i = 0; i < btn.length; i++) {
+					btn[i].style.cssText =
+				`
+				
+				visibility: visible;
+				
+				`
+				;}
+				var statisticsOfToDo = document.getElementsByClassName('statistics');
+				for (var i = 0; i < statisticsOfToDo.length; i++) {
+					statisticsOfToDo[i].style.cssText =
+				`
+				
+				display: none;
+				z-index: -1111;
+				visibility: hidden;
+				
+				`
+				;}
+				var hide = document.getElementsByTagName('span');
+				for (var i = 0; i < hide.length; i++){
+					hide[i].style.cssText =
+					`
+					display: none;
+					`;
+				}
+				var btn2 = document.getElementsByClassName('btn2');
+				for (var i = 0; i < btn2.length; i++) {
+					btn2[i].style.cssText =
+				`
+				
+				visibility: hidden;
+				
+				`
+				;}
+				var inputOfText = document.getElementsByClassName('inputOfText');
+				for (var i = 0; i < inputOfText.length; i++) {
+					inputOfText[i].style.cssText =
+				`
+				
+				visibility: hidden;
+				
+				`
+				;}
+				var addBtn = document.getElementsByClassName('addBtn');
+				for (var i = 0; i < addBtn.length; i++) {
+					addBtn[i].style.cssText =
+				`
+				
+				visibility: hidden;
+				
+				`
+				;}
+				var listOfToDo = document.getElementsByClassName('listOfToDo');
+				for (var i = 0; i < listOfToDo.length; i++) {
+					listOfToDo[i].style.cssText =
+				`
+				font-size: 2vh;
+				height: 20vh;
+				
+				`
+				;}
+				var close = document.getElementsByClassName('close');
+				for (var i = 0; i < close.length; i++) {
+					close[i].style.cssText =
+				`
+				
+				visibility: hidden;
+				
+				`
+				;}
+				var day = document.getElementsByClassName('day');
+				for (var i = 0; i < day.length; i++) {
+					day[i].style.cssText =
+				`
+				
+				visibility: visible;
+				display: block;
+				
+				`
+				;}
+				
+			}
+		}, false);
+		//Delete from To-Do list and check of To-Do
+		var NumberOfChecked = 0;
+		
+		var ul = document.querySelectorAll('ul');
+		for (var i = 0; i < ul.length; i++)
+		ul[i].addEventListener('click', function (ev) {
+		    if(ev.target.tagName === "LI") {
+		       ev.target.classList.toggle('checked');
+		       
+		       if(ev.target.classList.contains("checked")) {
+		       	   
+			       NumberOfChecked = NumberOfChecked + 1;
+			       document.getElementById('numberOfCheckedToDo').innerHTML = NumberOfChecked;
+			       toLocalOfStatistics();
+		       } else{
+			       NumberOfChecked = NumberOfChecked - 1;
+			       
+			       document.getElementById('numberOfCheckedToDo').innerHTML = NumberOfChecked;
+			       toLocalOfStatistics();
+		       }
+		       
+		
+		    } else if(ev.target.tagName === "SPAN") {
+		       var div = ev.target.parentNode;
+		       div.remove();
+		    }
+		    toLocal();
+		    toLocalOfTuesday();
+		    toLocalOfWednesday();
+		    toLocalOfThursday();
+		    toLocalOfFriday();
+		    toLocalOfSaturday();
+		    toLocalOfSunday();
+		    
+		}, false);
+		//Create NewTodo
+		function newElement() {
+		    var li = document.createElement('li');
+		    var inputValue = document.getElementById('toDoEl').value;
+		    var t = document.createTextNode(inputValue);
+		    li.appendChild(t);
+		    if(inputValue) {
+		       document.getElementById('list').appendChild(li);
+		    }
+		    document.getElementById('toDoEl').value = "";
+		    var span = document.createElement('SPAN');
+		    var txt = document.createTextNode("X");
+		    span.className = "close";
+		    span.appendChild(txt);
+		    li.appendChild(span);
+		    toLocal();
+		}
+		function newElementOfTuesday() {
+		    var li = document.createElement('li');
+		    var inputValue = document.getElementById('toDoElOfTuesday').value;
+		    var t = document.createTextNode(inputValue);
+		    li.appendChild(t);
+		    if(inputValue) {
+		       document.getElementById('listOfTuesday').appendChild(li);
+		    }
+		    document.getElementById('toDoElOfTuesday').value = "";
+		    var span = document.createElement('SPAN');
+		    var txt = document.createTextNode("X");
+		    span.className = "close";
+		    span.appendChild(txt);
+		    li.appendChild(span);
+		    toLocalOfTuesday();
+		}
+		function newElementOfWednesday() {
+		    var li = document.createElement('li');
+		    var inputValue = document.getElementById('toDoElOfWednesday').value;
+		    var t = document.createTextNode(inputValue);
+		    li.appendChild(t);
+		    if(inputValue) {
+		       document.getElementById('listOfWednesday').appendChild(li);
+		    }
+		    document.getElementById('toDoElOfWednesday').value = "";
+		    var span = document.createElement('SPAN');
+		    var txt = document.createTextNode("X");
+		    span.className = "close";
+		    span.appendChild(txt);
+		    li.appendChild(span);
+		    toLocalOfWednesday();
+		}
+		function newElementOfThursday() {
+		    var li = document.createElement('li');
+		    var inputValue = document.getElementById('toDoElOfThursday').value;
+		    var t = document.createTextNode(inputValue);
+		    li.appendChild(t);
+		    if(inputValue) {
+		       document.getElementById('listOfThursday').appendChild(li);
+		    }
+		    document.getElementById('toDoElOfThursday').value = "";
+		    var span = document.createElement('SPAN');
+		    var txt = document.createTextNode("X");
+		    span.className = "close";
+		    span.appendChild(txt);
+		    li.appendChild(span);
+		    toLocalOfThursday();
+		}
+		function newElementOfFriday() {
+		    var li = document.createElement('li');
+		    var inputValue = document.getElementById('toDoElOfFriday').value;
+		    var t = document.createTextNode(inputValue);
+		    li.appendChild(t);
+		    if(inputValue) {
+		       document.getElementById('listOfFriday').appendChild(li);
+		    }
+		    document.getElementById('toDoElOfFriday').value = "";
+		    var span = document.createElement('SPAN');
+		    var txt = document.createTextNode("X");
+		    span.className = "close";
+		    span.appendChild(txt);
+		    li.appendChild(span);
+		    toLocalOfFriday();
+		}
+		function newElementOfSaturday() {
+		    var li = document.createElement('li');
+		    var inputValue = document.getElementById('toDoElOfSaturday').value;
+		    var t = document.createTextNode(inputValue);
+		    li.appendChild(t);
+		    if(inputValue) {
+		       document.getElementById('listOfSaturday').appendChild(li);
+		    }
+		    document.getElementById('toDoElOfSaturday').value = "";
+		    var span = document.createElement('SPAN');
+		    var txt = document.createTextNode("X");
+		    span.className = "close";
+		    span.appendChild(txt);
+		    li.appendChild(span);
+		    toLocalOfSaturday();
+		}
+		function newElementOfSunday() {
+		    var li = document.createElement('li');
+		    var inputValue = document.getElementById('toDoElOfSunday').value;
+		    var t = document.createTextNode(inputValue);
+		    li.appendChild(t);
+		    if(inputValue) {
+		       document.getElementById('listOfSunday').appendChild(li);
+		    }
+		    document.getElementById('toDoElOfSunday').value = "";
+		    var span = document.createElement('SPAN');
+		    var txt = document.createTextNode("X");
+		    span.className = "close";
+		    span.appendChild(txt);
+		    li.appendChild(span);
+		    toLocalOfSunday();
+		}
+		//Take data from LocalStorage
+		if(localStorage.getItem("todos")){
+	        document.getElementById('list').innerHTML = localStorage.getItem("todos");
+	        var close = document.getElementsByClassName('close');
+					for (var i = 0; i < close.length; i++) {
+					close[i].style.cssText =
+					`
+					
+					visibility: hidden;
+					
+					`
+				;}
+       	}
+       	if(localStorage.getItem("todosOfTuesday")){
+	        document.getElementById('listOfTuesday').innerHTML = localStorage.getItem("todosOfTuesday");
+	        var close = document.getElementsByClassName('close');
+					for (var i = 0; i < close.length; i++) {
+					close[i].style.cssText =
+					`
+					
+					visibility: hidden;
+					
+					`
+				;}
+       	}
+       	if(localStorage.getItem("todosOfWednesday")){
+        	document.getElementById('listOfWednesday').innerHTML = localStorage.getItem("todosOfWednesday");
+        	var close = document.getElementsByClassName('close');
+					for (var i = 0; i < close.length; i++) {
+					close[i].style.cssText =
+					`
+					
+					visibility: hidden;
+					
+					`
+				;}
+       	}
+       	if(localStorage.getItem("todosOfThursday")){
+        	document.getElementById('listOfThursday').innerHTML = localStorage.getItem("todosOfThursday");
+        	var close = document.getElementsByClassName('close');
+					for (var i = 0; i < close.length; i++) {
+					close[i].style.cssText =
+					`
+					
+					visibility: hidden;
+					
+					`
+				;}
+       	}
+       	if(localStorage.getItem("todosOfFriday")){
+        	document.getElementById('listOfFriday').innerHTML = localStorage.getItem("todosOfFriday");
+        	var close = document.getElementsByClassName('close');
+					for (var i = 0; i < close.length; i++) {
+					close[i].style.cssText =
+					`
+					
+					visibility: hidden;
+					
+					`
+				;}
+       	}
+       	if(localStorage.getItem("todosOfSaturday")){
+        	document.getElementById('listOfSaturday').innerHTML = localStorage.getItem("todosOfSaturday");
+        	var close = document.getElementsByClassName('close');
+					for (var i = 0; i < close.length; i++) {
+					close[i].style.cssText =
+					`
+					
+					visibility: hidden;
+					
+					`
+				;}
+       	}
+       	if(localStorage.getItem("todosOfSunday")){
+        	document.getElementById('listOfSunday').innerHTML = localStorage.getItem("todosOfSunday");
+        	var close = document.getElementsByClassName('close');
+					for (var i = 0; i < close.length; i++) {
+					close[i].style.cssText =
+					`
+					
+					visibility: hidden;
+					
+					`
+				;}
+       	}
+       	if(localStorage.getItem("statistics")){
+        	document.getElementById('numberOfCheckedToDo').innerHTML = localStorage.getItem("statistics");
+        	NumberOfChecked = eval(document.getElementById('numberOfCheckedToDo').innerHTML);
+        	if(NumberOfChecked >= 1) {
+        		document.getElementById('tree').style.cssText = 
+        			`
+					display:block;							
+					`
+        	}
+        	if(NumberOfChecked >= 3) {
+        		document.getElementById('tree').style.cssText = 
+        			`
+					font-size: 110%;
+					display:block;
+
+					`
+
+        	}
+        	if(NumberOfChecked >= 5) {
+        		document.getElementById('tree').style.cssText = 
+        			`
+					font-size:120%;
+					display:block;							
+					`
+        	}
+        	if(NumberOfChecked >= 10) {
+        		document.getElementById('tree').style.cssText = 
+        			`
+					font-size:130%;	
+					display:block;						
+					`
+        	}
+        	if(NumberOfChecked >= 15) {
+        		document.getElementById('tree').style.cssText = 
+        			`
+					font-size:140%;	
+					display:block;						
+					`
+        	}
+        	if(NumberOfChecked >= 20) {
+        		document.getElementById('tree').style.cssText = 
+        			`
+					font-size:145%;	
+					display:block;						
+					`
+        	}
+        	if(NumberOfChecked >= 30) {
+        		document.getElementById('tree').style.cssText = 
+        			`
+					font-size:150%;	
+					display:block;						
+					`
+        	}
+        	if(NumberOfChecked >= 35) {
+        		document.getElementById('tree').style.cssText = 
+        			`
+					font-size:155%;	
+					display:block;						
+					`
+        	}
+        	if(NumberOfChecked >= 50) {
+        		document.getElementById('tree').style.cssText = 
+        			`
+					font-size:160%;	
+					display:block;						
+					`
+        	}
+        	if(NumberOfChecked >= 60) {
+        		document.getElementById('tree').style.cssText = 
+        			`
+					font-size:170%;	
+					display:block;						
+					`
+        	}
+        	if(NumberOfChecked >= 70) {
+        		document.getElementById('tree').style.cssText = 
+        			`
+					font-size:175%;	
+					display:block;						
+					`
+        	}
+        	if(NumberOfChecked >= 80) {
+        		document.getElementById('tree').style.cssText = 
+        			`
+					font-size:180%;	
+					display:block;						
+					`
+        	}
+        	if(NumberOfChecked >= 90) {
+        		document.getElementById('tree').style.cssText = 
+        			`
+					font-size:190%;	
+					display:block;						
+					`
+        	}
+        	if(NumberOfChecked >= 100) {
+        		document.getElementById('tree').style.cssText = 
+        			`
+					font-size:200%;	
+					display:block;
+
+					`
+        	}
+
+       	}
+       		if(localStorage.getItem("languageOfSistem")){
+       			flagOfLanguage = localStorage.getItem("languageOfSistem");
+       			if(flagOfLanguage == 1){
+        		
+        			var inputOfText = document.getElementsByClassName('inputOfText');
+					for (var i = 0; i < inputOfText.length; i++) {
+					inputOfText[i].placeholder = "Введите новое дело...";
+				}
+				var addBtn = document.getElementsByClassName('addBtn');
+					for (var i = 0; i < addBtn.length; i++) {
+					addBtn[i].innerHTML = "Добавить";
+				}
+				document.getElementById('NameOfApp').innerHTML = "Список дел";
+				document.getElementById('Monday').innerHTML = "П<span>о</span>н<span >едельник</span>";
+				document.getElementById('Tuesday').innerHTML = "Вт<span>орник</span>";
+				document.getElementById('Wednesday').innerHTML = "Ср<span>еда</span>";
+				document.getElementById('Thursday').innerHTML = "Ч<span>е</span>т<span>верг</span>";
+				document.getElementById('Friday').innerHTML = "П<span>я</span>т<span>ница</span>";
+				document.getElementById('Saturday').innerHTML = "С<span>у</span>б<span>отта</span>";
+				document.getElementById('Sunday').innerHTML = "В<span>о</span>с<span>кресенье</span>";
+				document.getElementById('Menu').innerHTML = "Меню";
+				document.getElementById('beginNewWeek').innerHTML = "Начать новую неделю";
+				document.getElementById('deleteAll').innerHTML = "Удалить все";
+				document.getElementById('language').innerHTML = "Язык";
+				document.getElementById('russian').innerHTML = "Русский";
+				document.getElementById('english').innerHTML = "Английский";
+				document.getElementById('chinese').innerHTML = "Китайский";
+				document.getElementById('NumberOfCompletedTasks').innerHTML = "Кол-во выполненных дел: ";
+				var Warning = document.getElementsByClassName('Warning');
+				for (var i = 0; i < Warning.length; i++ ){
+					Warning[i].innerHTML = "Вы уверены?";
+				}
+				document.getElementById('deleteAllYes').innerHTML = "Да";
+				document.getElementById('deleteAllNo').innerHTML = "Нет";
+				document.getElementById('beginNewWeekYes').innerHTML = "Да";
+				document.getElementById('beginNewWeekNo').innerHTML = "Нет";
+
+
+				
+        	} else if (flagOfLanguage == 2) {
+        		var inputOfText = document.getElementsByClassName('inputOfText');
+					for (var i = 0; i < inputOfText.length; i++) {
+					inputOfText[i].placeholder = "Type here...";
+				}
+				var addBtn = document.getElementsByClassName('addBtn');
+					for (var i = 0; i < addBtn.length; i++) {
+					addBtn[i].innerHTML = "Click";
+				}
+				document.getElementById('NameOfApp').innerHTML = "To-Do list";
+				document.getElementById('Monday').innerHTML = "Mo<span>nday</span>";
+				document.getElementById('Tuesday').innerHTML = "Tu<span>sday</span>";
+				document.getElementById('Wednesday').innerHTML = "We<span>dnesday</span>";
+				document.getElementById('Thursday').innerHTML = "Th<span>ursday</span>";
+				document.getElementById('Friday').innerHTML = "Fr<span>iday</span>";
+				document.getElementById('Saturday').innerHTML = "Sa<span>turday</span>";
+				document.getElementById('Sunday').innerHTML = "Su<span>nday</span>";
+				document.getElementById('Menu').innerHTML = "Menu";
+				document.getElementById('beginNewWeek').innerHTML = "Begin new week";
+				document.getElementById('deleteAll').innerHTML = "Delete all information";
+				document.getElementById('language').innerHTML = "Language";
+				document.getElementById('russian').innerHTML = "Russian";
+				document.getElementById('english').innerHTML = "English";
+				document.getElementById('NumberOfCompletedTasks').innerHTML = "Number of completed tasks: ";
+				var Warning = document.getElementsByClassName('Warning');
+				for (var i = 0; i < Warning.length; i++ ){
+					Warning[i].innerHTML = "Are you sure?";
+				}
+				document.getElementById('deleteAllYes').innerHTML = "Yes";
+				document.getElementById('deleteAllNo').innerHTML = "No";
+				document.getElementById('beginNewWeekYes').innerHTML = "Yes";
+				document.getElementById('beginNewWeekNo').innerHTML = "No";
+				
+        	}else if(flagOfLanguage == 3){
+        		var inputOfText = document.getElementsByClassName('inputOfText');
+					for (var i = 0; i < inputOfText.length; i++) {
+					inputOfText[i].placeholder = "...";
+				}
+				var addBtn = document.getElementsByClassName('addBtn');
+					for (var i = 0; i < addBtn.length; i++) {
+					addBtn[i].innerHTML = "加";
+				}
+				document.getElementById('NameOfApp').innerHTML = "待办事项";
+				document.getElementById('Monday').innerHTML = "周一";
+				document.getElementById('Tuesday').innerHTML = "周二";
+				document.getElementById('Wednesday').innerHTML = "周三";
+				document.getElementById('Thursday').innerHTML = "周四";
+				document.getElementById('Friday').innerHTML = "周五";
+				document.getElementById('Saturday').innerHTML = "周六";
+				document.getElementById('Sunday').innerHTML = "周日";
+				document.getElementById('Menu').innerHTML = "菜单";
+				document.getElementById('beginNewWeek').innerHTML = "开始新星期";
+				document.getElementById('deleteAll').innerHTML = "删除所有的信息";
+				document.getElementById('language').innerHTML = "语言";
+				document.getElementById('russian').innerHTML = "俄语";
+				document.getElementById('english').innerHTML = "英语";
+				document.getElementById('chinese').innerHTML = "汉语";
+				document.getElementById('NumberOfCompletedTasks').innerHTML = "完成的任务数: ";
+				var Warning = document.getElementsByClassName('Warning');
+				for (var i = 0; i < Warning.length; i++ ){
+					Warning[i].innerHTML = "你确定吗？";
+				}
+				document.getElementById('deleteAllYes').innerHTML = "是的";
+				document.getElementById('deleteAllNo').innerHTML = "不要";
+				document.getElementById('beginNewWeekYes').innerHTML = "是的";
+				document.getElementById('beginNewWeekNo').innerHTML = "不要";
+        	}
+
+       	}
+       	//delete all infromation
+       	document.getElementById('deleteAll').onclick = function(){
+
+       		document.getElementById('warningOfDeleleAllInformation').style.cssText =
+					`
+					
+					display: block;
+					z-index: 1111;
+					visibility: visible;
+					
+					`;
+
+       		document.getElementById("deleteAllYes").onclick = function(){
+
+	       		document.getElementById('list').innerHTML = "";
+	       		toLocal();
+	       		document.getElementById('listOfTuesday').innerHTML = "";
+	       		toLocalOfTuesday();
+	       		document.getElementById('listOfWednesday').innerHTML = "";
+	       		toLocalOfWednesday();
+	       		document.getElementById('listOfThursday').innerHTML = "";
+	       		toLocalOfThursday();
+	       		document.getElementById('listOfFriday').innerHTML = "";
+	       		toLocalOfFriday();
+	       		document.getElementById('listOfSaturday').innerHTML = "";
+	       		toLocalOfSaturday();
+	       		document.getElementById('listOfSunday').innerHTML = "";
+	       		toLocalOfSunday();
+	       		document.getElementById('numberOfCheckedToDo').innerHTML = "";
+	       		NumberOfChecked = 0;
+	       		toLocalOfStatistics();
+	       		document.getElementById('warningOfDeleleAllInformation').style.cssText =
+					`
+					
+					display: none;
+					z-index: -1111;
+					visibility: hidden;
+					
+					`;
+	       	}
+	       	document.getElementById("deleteAllNo").onclick = function(){
+	       		document.getElementById('warningOfDeleleAllInformation').style.cssText =
+					`
+					
+					display: none;
+					z-index: -1111;
+					visibility: hidden;
+					
+					`;
+
+	       		
+	       	}
+       	};
+       
+       	//language of sistem
+       	/* 0 == undefined
+       	1 == rus
+       	2 == eng
+       	3 == cn
+       	*/
+       	var flagOfLanguage = 0;
+		document.getElementById('language').onclick = function(){
+			document.getElementById('divOfLanguage').style.cssText =
+					`
+					
+					display: block;
+					z-index: 1111;
+					visibility: visible;
+					
+					`;
+			
+			document.getElementById('russian').onclick = function() {
+				flagOfLanguage = 1 ;
+       			toLocalOfLanguage();
+				var inputOfText = document.getElementsByClassName('inputOfText');
+					for (var i = 0; i < inputOfText.length; i++) {
+					inputOfText[i].placeholder = "Введите новое дело...";
+				}
+				var addBtn = document.getElementsByClassName('addBtn');
+					for (var i = 0; i < addBtn.length; i++) {
+					addBtn[i].innerHTML = "Добавить";
+				}
+				document.getElementById('NameOfApp').innerHTML = "Список дел";
+				document.getElementById('Monday').innerHTML = "П<span>о</span>н<span >едельник</span>";
+				document.getElementById('Tuesday').innerHTML = "Вт<span>орник</span>";
+				document.getElementById('Wednesday').innerHTML = "Ср<span>еда</span>";
+				document.getElementById('Thursday').innerHTML = "Ч<span>е</span>т<span>верг</span>";
+				document.getElementById('Friday').innerHTML = "П<span>я</span>т<span>ница</span>";
+				document.getElementById('Saturday').innerHTML = "С<span>у</span>б<span>отта</span>";
+				document.getElementById('Sunday').innerHTML = "В<span>о</span>с<span>кресенье</span>";
+				document.getElementById('Menu').innerHTML = "Меню";
+				document.getElementById('beginNewWeek').innerHTML = "Начать новую неделю";
+				document.getElementById('deleteAll').innerHTML = "Удалить все";
+				document.getElementById('language').innerHTML = "Язык";
+				document.getElementById('russian').innerHTML = "Русский";
+				document.getElementById('english').innerHTML = "Английский";
+				document.getElementById('chinese').innerHTML = "Китайский";
+				document.getElementById('NumberOfCompletedTasks').innerHTML = "Кол-во выполненных дел: ";
+				
+				document.getElementById('deleteAllYes').innerHTML = "Да";
+				document.getElementById('deleteAllNo').innerHTML = "Нет";
+				document.getElementById('beginNewWeekYes').innerHTML = "Да";
+				document.getElementById('beginNewWeekNo').innerHTML = "Нет";
+				var Warning = document.getElementsByClassName('Warning');
+				for (var i = 0; i < Warning.length; i++ ){
+					Warning[i].innerHTML = "Вы уверены?";
+				}
+				
+
+				
+
+				document.getElementById('divOfLanguage').style.cssText =
+					`
+					
+					display: none;
+					z-index: -1111;
+					visibility: hidden;
+					
+					`;
+
+				
+			
+			}
+			document.getElementById('english').onclick = function() {
+				flagOfLanguage = 2;
+       			toLocalOfLanguage();
+				var inputOfText = document.getElementsByClassName('inputOfText');
+					for (var i = 0; i < inputOfText.length; i++) {
+					inputOfText[i].placeholder = "Type here...";
+				}
+				var addBtn = document.getElementsByClassName('addBtn');
+					for (var i = 0; i < addBtn.length; i++) {
+					addBtn[i].innerHTML = "Click";
+				}
+				document.getElementById('NameOfApp').innerHTML = "To-Do list";
+				document.getElementById('Monday').innerHTML = "Mo<span>nday</span>";
+				document.getElementById('Tuesday').innerHTML = "Tu<span>sday</span>";
+				document.getElementById('Wednesday').innerHTML = "We<span>dnesday</span>";
+				document.getElementById('Thursday').innerHTML = "Th<span>ursday</span>";
+				document.getElementById('Friday').innerHTML = "Fr<span>iday</span>";
+				document.getElementById('Saturday').innerHTML = "Sa<span>turday</span>";
+				document.getElementById('Sunday').innerHTML = "Su<span>nday</span>";
+				document.getElementById('Menu').innerHTML = "Menu";
+				document.getElementById('beginNewWeek').innerHTML = "Begin new week";
+				document.getElementById('deleteAll').innerHTML = "Delete all information";
+				document.getElementById('language').innerHTML = "Language";
+				document.getElementById('russian').innerHTML = "Russian";
+				document.getElementById('english').innerHTML = "English";
+				document.getElementById('chinese').innerHTML = "Chinese";
+				document.getElementById('NumberOfCompletedTasks').innerHTML = "Number of completed tasks: ";
+				var Warning = document.getElementsByClassName('Warning');
+				for (var i = 0; i < Warning.length; i++ ){
+					Warning[i].innerHTML = "Are you sure?";
+				}
+				document.getElementById('deleteAllYes').innerHTML = "Yes";
+				document.getElementById('deleteAllNo').innerHTML = "No";
+				document.getElementById('beginNewWeekYes').innerHTML = "Yes";
+				document.getElementById('beginNewWeekNo').innerHTML = "No";
+				document.getElementById('divOfLanguage').style.cssText =
+					`
+					display: none;
+					z-index: -1111;
+					visibility: hidden;
+					`;
+				
+			};
+			document.getElementById('chinese').onclick = function() {
+				flagOfLanguage = 3;
+       			toLocalOfLanguage();
+				var inputOfText = document.getElementsByClassName('inputOfText');
+					for (var i = 0; i < inputOfText.length; i++) {
+					inputOfText[i].placeholder = "...";
+				}
+				var addBtn = document.getElementsByClassName('addBtn');
+					for (var i = 0; i < addBtn.length; i++) {
+					addBtn[i].innerHTML = "加";
+				}
+				document.getElementById('NameOfApp').innerHTML = "待办事项";
+				document.getElementById('Monday').innerHTML = "周一";
+				document.getElementById('Tuesday').innerHTML = "周二";
+				document.getElementById('Wednesday').innerHTML = "周三";
+				document.getElementById('Thursday').innerHTML = "周四";
+				document.getElementById('Friday').innerHTML = "周五";
+				document.getElementById('Saturday').innerHTML = "周六";
+				document.getElementById('Sunday').innerHTML = "周日";
+				document.getElementById('Menu').innerHTML = "菜单";
+				document.getElementById('beginNewWeek').innerHTML = "开始新星期";
+				document.getElementById('deleteAll').innerHTML = "删除所有的信息";
+				document.getElementById('language').innerHTML = "语言";
+				document.getElementById('russian').innerHTML = "俄语";
+				document.getElementById('english').innerHTML = "英语";
+				document.getElementById('chinese').innerHTML = "汉语";
+				document.getElementById('NumberOfCompletedTasks').innerHTML = "完成的任务数: ";
+				var Warning = document.getElementsByClassName('Warning');
+				for (var i = 0; i < Warning.length; i++ ){
+					Warning[i].innerHTML = "你确定吗？";
+				}
+				document.getElementById('deleteAllYes').innerHTML = "是的";
+				document.getElementById('deleteAllNo').innerHTML = "不要";
+				document.getElementById('beginNewWeekYes').innerHTML = "是的";
+				document.getElementById('beginNewWeekNo').innerHTML = "不要";
+				document.getElementById('divOfLanguage').style.cssText =
+					`
+					display: none;
+					z-index: -1111;
+					visibility: hidden;
+					`;
+				
+			};
+		};
+
+		document.getElementById('beginNewWeek').onclick = function() {
+			document.getElementById('divOfBeginNewWeek').style.cssText =
+					`
+					
+					display: block;
+					z-index: 1111;
+					visibility: visible;
+					
+					`;
+			document.getElementById("beginNewWeekYes").onclick = function(){
+
+	       		var beginNewWeek = document.querySelectorAll('li');
+				for (var i = 0; i < beginNewWeek.length; i++){
+					if(beginNewWeek[i].classList.contains("checked")) {
+				   	   	beginNewWeek[i].classList.toggle('checked');
+				   	   	toLocal();
+			       		toLocalOfTuesday();
+			       		toLocalOfWednesday();
+			       		toLocalOfThursday();
+			       		toLocalOfFriday();
+			       		toLocalOfSaturday();
+			       		toLocalOfSunday();
+			       		toLocalOfStatistics(); 
+				   	};
+		       	};
+		       		document.getElementById('divOfBeginNewWeek').style.cssText =
+					`
+					
+					display: none;
+					z-index: -1111;
+					visibility: hidden;
+					
+					`;
+		    }
+		    document.getElementById("beginNewWeekNo").onclick = function(){
+		    		document.getElementById('divOfBeginNewWeek').style.cssText =
+					`
+					
+					display: none;
+					z-index: -1111;
+					visibility: hidden;
+					
+					`;
+		    }
+		};	
+	</script>
+</body>
+</html>
