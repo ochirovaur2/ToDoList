@@ -148,7 +148,7 @@
 		ul li {
 		    cursor: pointer;
 		    position: relative;
-		    padding: 12px 0px 12px 0px;
+		    padding: 4px 0px 4px 0px;
 			
 		    color: black;
 		    background: #FECA00;
@@ -194,7 +194,8 @@
 		.close {
 		    position: absolute;
 		    right: 0;
-		    top: 0;
+		    top: 50%;
+		    transform: translateY(-50%);
 		    padding: 12px 16px 12px 16px;
 		    border-radius: 5px;
 		}
@@ -307,6 +308,23 @@
 		.day h3 span {
 			display: none;
 		}
+		.time{
+			text-align: left;
+			
+			display: none;
+			
+		}
+		h6{
+			display: inline;
+			font-weight: normal;
+			line-height: 2vh;
+
+		}
+		.inputOfTime{
+			height: 4vh;
+		    line-height: 4vh;
+		    font-size: 2vh;
+		}
 		
 
 	</style>
@@ -347,6 +365,12 @@
 			<div class="input">
 	   			<input class="inputOfText" type="text" placeholder="Type here..." id="toDoEl">
 				<span class="addBtn" onclick="newElement()">Click</span>
+				<p class="time">
+					From: 
+					<input type="time" name="" id="timeFromOfMonday" class="inputOfTime">
+					to:
+					<input type="time" name="" id="timeTillOfMonday" class="inputOfTime">
+				<p>
 			</div>
 			<button class="btn">&#9998;</button>
 			<button class="btn2">&#9745;</button>
@@ -362,6 +386,14 @@
 			<div class="input">
 	   			<input class="inputOfText" type="text" placeholder="Type here..." id="toDoElOfTuesday">
 				<span class="addBtn" onclick="newElementOfTuesday()">Click</span>
+				
+					<p class="time">
+						From:  
+						<input type="time" name="" id="timeFromOfTuesday" class="inputOfTime">
+						to:
+						<input type="time" name="" id="timeTillOfTuesday" class="inputOfTime">
+					</p>
+				
 			</div>
 			<button class="btn">&#9998;</button>
 			<button class="btn2">&#9745;</button>
@@ -376,6 +408,12 @@
 			<div class="input">
 	   			<input class="inputOfText" type="text" placeholder="Type here..." id="toDoElOfWednesday">
 				<span class="addBtn" onclick="newElementOfWednesday()">Click</span>
+				<p class="time">
+					From:  
+					<input type="time" name="" id="timeFromOfWednasday" class="inputOfTime">
+					to:
+					<input type="time" name="" id="timeTillOfWednasday" class="inputOfTime">
+				<p>
 			</div>
 			<button class="btn">&#9998;</button>
 			<button class="btn2">&#9745;</button>
@@ -390,6 +428,12 @@
 			<div class="input">
 	   			<input class="inputOfText" type="text" placeholder="Type here..." id="toDoElOfThursday">
 				<span class="addBtn" onclick="newElementOfThursday()">Click</span>
+				<p class="time">
+					From: 
+					<input type="time" name="" id="timeFromOfThursday" class="inputOfTime">
+					to:
+					<input type="time" name="" id="timeTillOfThursday" class="inputOfTime">
+				<p>
 			</div>
 			<button class="btn">&#9998;</button>
 			<button class="btn2">&#9745;</button>
@@ -404,6 +448,12 @@
 			<div class="input">
 	   			<input class="inputOfText" type="text" placeholder="Type here..." id="toDoElOfFriday">
 				<span class="addBtn" onclick="newElementOfFriday()">Click</span>
+				<p class="time">
+					From:  
+					<input type="time" name="" id="timeFromOfFriday" class="inputOfTime">
+					to:
+					<input type="time" name="" id="timeTillOfFriday" class="inputOfTime">
+				<p>
 			</div>
 			<button class="btn">&#9998;</button>
 			<button class="btn2">&#9745;</button>
@@ -418,6 +468,12 @@
 			<div class="input">
 	   			<input class="inputOfText" type="text" placeholder="Type here..." id="toDoElOfSaturday">
 				<span class="addBtn" onclick="newElementOfSaturday()">Click</span>
+				<p class="time">
+					From: 
+					<input type="time" name="" id="timeFromOfSaturday" class="inputOfTime">
+					to:
+					<input type="time" name="" id="timeTillOfSaturday" class="inputOfTime">
+				<p>
 			</div>
 			<button class="btn">&#9998;</button>
 			<button class="btn2">&#9745;</button>
@@ -432,6 +488,12 @@
 			<div class="input">
 	   			<input class="inputOfText" type="text" placeholder="Type here..." id="toDoElOfSunday">
 				<span class="addBtn" onclick="newElementOfSunday()">Click</span>
+				<p class="time">
+					From: 
+					<input type="time" name="" id="timeFromOfSunday" class="inputOfTime">
+					to:
+					<input type="time" name="" id="timeTillOfSunday" class="inputOfTime">
+				<p>
 			</div>
 			<button class="btn">&#9998;</button>
 			<button class="btn2">&#9745;</button>
@@ -514,6 +576,14 @@
 				
 				visibility: hidden;
 				display: none;
+				
+				`
+				;}
+				var time = document.getElementsByClassName('time');
+				for (var i = 0; i < time.length; i++) {
+					time[i].style.cssText =
+				`
+				display: block;
 				
 				`
 				;}
@@ -695,6 +765,14 @@
 				
 				`
 				;}
+				var time = document.getElementsByClassName('time');
+				for (var i = 0; i < time.length; i++) {
+					time[i].style.cssText =
+				`
+				display: none;
+				
+				`
+				;}
 				
 			}
 		}, false);
@@ -748,6 +826,30 @@
 		    span.className = "close";
 		    span.appendChild(txt);
 		    li.appendChild(span);
+		    var timeFrom;
+		    var valueOfTimeFrom;
+		    var timeTill;
+		    var valueOfTimeTill;
+		    var textTimeFrom;
+		    var textTimeTill;
+		    var br = document.createElement('br');
+		    if((document.getElementById('timeFromOfMonday').value) && (document.getElementById('timeTillOfMonday').value)){
+			    timeFrom = document.createElement('h6');
+			    valueOfTimeFrom = document.getElementById('timeFromOfMonday').value;
+			    textTimeFrom = document.createTextNode("From: " + valueOfTimeFrom);
+
+			    timeTill = document.createElement('h6');
+			    valueOfTimeTill = document.getElementById('timeTillOfMonday').value;
+			    textTimeTill = document.createTextNode(" to: " + valueOfTimeTill);
+			    timeFrom.appendChild(textTimeFrom);
+			    timeTill.appendChild(textTimeTill);
+			    li.appendChild(br);
+			    li.appendChild(timeFrom);
+				li.appendChild(timeTill);
+				document.getElementById('timeFromOfMonday').value = "";
+				document.getElementById('timeTillOfMonday').value = "";
+			}
+			
 		    toLocal();
 		}
 		function newElementOfTuesday() {
@@ -764,6 +866,29 @@
 		    span.className = "close";
 		    span.appendChild(txt);
 		    li.appendChild(span);
+		    var timeFrom;
+		    var valueOfTimeFrom;
+		    var timeTill;
+		    var valueOfTimeTill;
+		    var textTimeFrom;
+		    var textTimeTill;
+		    var br = document.createElement('br');
+		    if((document.getElementById('timeFromOfTuesday').value) && (document.getElementById('timeTillOfTuesday').value)){
+			    timeFrom = document.createElement('h6');
+			    valueOfTimeFrom = document.getElementById('timeFromOfTuesday').value;
+			    textTimeFrom = document.createTextNode("From: " + valueOfTimeFrom);
+
+			    timeTill = document.createElement('h6');
+			    valueOfTimeTill = document.getElementById('timeTillOfTuesday').value;
+			    textTimeTill = document.createTextNode(" to: " + valueOfTimeTill);
+			    timeFrom.appendChild(textTimeFrom);
+			    timeTill.appendChild(textTimeTill);
+			    li.appendChild(br);
+			    li.appendChild(timeFrom);
+				li.appendChild(timeTill);
+				document.getElementById('timeFromOfTuesday').value = "";
+				document.getElementById('timeTillOfTuesday').value = "";
+			}
 		    toLocalOfTuesday();
 		}
 		function newElementOfWednesday() {
@@ -780,6 +905,29 @@
 		    span.className = "close";
 		    span.appendChild(txt);
 		    li.appendChild(span);
+		    var timeFrom;
+		    var valueOfTimeFrom;
+		    var timeTill;
+		    var valueOfTimeTill;
+		    var textTimeFrom;
+		    var textTimeTill;
+		    var br = document.createElement('br');
+		    if((document.getElementById('timeFromOfWednasday').value) && (document.getElementById('timeTillOfWednasday').value)){
+			    timeFrom = document.createElement('h6');
+			    valueOfTimeFrom = document.getElementById('timeFromOfWednasday').value;
+			    textTimeFrom = document.createTextNode("From: " + valueOfTimeFrom);
+
+			    timeTill = document.createElement('h6');
+			    valueOfTimeTill = document.getElementById('timeTillOfWednasday').value;
+			    textTimeTill = document.createTextNode(" to: " + valueOfTimeTill);
+			    timeFrom.appendChild(textTimeFrom);
+			    timeTill.appendChild(textTimeTill);
+			    li.appendChild(br);
+			    li.appendChild(timeFrom);
+				li.appendChild(timeTill);
+				document.getElementById('timeFromOfWednasday').value = "";
+				document.getElementById('timeTillOfWednasday').value = "";
+			}
 		    toLocalOfWednesday();
 		}
 		function newElementOfThursday() {
@@ -796,6 +944,29 @@
 		    span.className = "close";
 		    span.appendChild(txt);
 		    li.appendChild(span);
+		    var timeFrom;
+		    var valueOfTimeFrom;
+		    var timeTill;
+		    var valueOfTimeTill;
+		    var textTimeFrom;
+		    var textTimeTill;
+		    var br = document.createElement('br');
+		    if((document.getElementById('timeFromOfThursday').value) && (document.getElementById('timeTillOfThursday').value)){
+			    timeFrom = document.createElement('h6');
+			    valueOfTimeFrom = document.getElementById('timeFromOfThursday').value;
+			    textTimeFrom = document.createTextNode("From: " + valueOfTimeFrom);
+
+			    timeTill = document.createElement('h6');
+			    valueOfTimeTill = document.getElementById('timeTillOfThursday').value;
+			    textTimeTill = document.createTextNode(" to: " + valueOfTimeTill);
+			    timeFrom.appendChild(textTimeFrom);
+			    timeTill.appendChild(textTimeTill);
+			    li.appendChild(br);
+			    li.appendChild(timeFrom);
+				li.appendChild(timeTill);
+				document.getElementById('timeFromOfThursday').value = "";
+				document.getElementById('timeTillOfThursday').value = "";
+			}
 		    toLocalOfThursday();
 		}
 		function newElementOfFriday() {
@@ -812,6 +983,29 @@
 		    span.className = "close";
 		    span.appendChild(txt);
 		    li.appendChild(span);
+		    var timeFrom;
+		    var valueOfTimeFrom;
+		    var timeTill;
+		    var valueOfTimeTill;
+		    var textTimeFrom;
+		    var textTimeTill;
+		    var br = document.createElement('br');
+		    if((document.getElementById('timeFromOfFriday').value) && (document.getElementById('timeTillOfFriday').value)){
+			    timeFrom = document.createElement('h6');
+			    valueOfTimeFrom = document.getElementById('timeFromOfFriday').value;
+			    textTimeFrom = document.createTextNode("From: " + valueOfTimeFrom);
+
+			    timeTill = document.createElement('h6');
+			    valueOfTimeTill = document.getElementById('timeTillOfFriday').value;
+			    textTimeTill = document.createTextNode(" to: " + valueOfTimeTill);
+			    timeFrom.appendChild(textTimeFrom);
+			    timeTill.appendChild(textTimeTill);
+			    li.appendChild(br);
+			    li.appendChild(timeFrom);
+				li.appendChild(timeTill);
+				document.getElementById('timeFromOfFriday').value = "";
+				document.getElementById('timeTillOfFriday').value = "";
+			}
 		    toLocalOfFriday();
 		}
 		function newElementOfSaturday() {
@@ -828,6 +1022,29 @@
 		    span.className = "close";
 		    span.appendChild(txt);
 		    li.appendChild(span);
+		    var timeFrom;
+		    var valueOfTimeFrom;
+		    var timeTill;
+		    var valueOfTimeTill;
+		    var textTimeFrom;
+		    var textTimeTill;
+		    var br = document.createElement('br');
+		    if((document.getElementById('timeFromOfSaturday').value) && (document.getElementById('timeTillOfSaturday').value)){
+			    timeFrom = document.createElement('h6');
+			    valueOfTimeFrom = document.getElementById('timeFromOfSaturday').value;
+			    textTimeFrom = document.createTextNode("From: " + valueOfTimeFrom);
+
+			    timeTill = document.createElement('h6');
+			    valueOfTimeTill = document.getElementById('timeTillOfSaturday').value;
+			    textTimeTill = document.createTextNode(" to: " + valueOfTimeTill);
+			    timeFrom.appendChild(textTimeFrom);
+			    timeTill.appendChild(textTimeTill);
+			    li.appendChild(br);
+			    li.appendChild(timeFrom);
+				li.appendChild(timeTill);
+				document.getElementById('timeFromOfSaturday').value = "";
+				document.getElementById('timeTillOfSaturday').value = "";
+			}
 		    toLocalOfSaturday();
 		}
 		function newElementOfSunday() {
@@ -844,6 +1061,29 @@
 		    span.className = "close";
 		    span.appendChild(txt);
 		    li.appendChild(span);
+		    var timeFrom;
+		    var valueOfTimeFrom;
+		    var timeTill;
+		    var valueOfTimeTill;
+		    var textTimeFrom;
+		    var textTimeTill;
+		    var br = document.createElement('br');
+		    if((document.getElementById('timeFromOfSunday').value) && (document.getElementById('timeTillOfSunday').value)){
+			    timeFrom = document.createElement('h6');
+			    valueOfTimeFrom = document.getElementById('timeFromOfSunday').value;
+			    textTimeFrom = document.createTextNode("From: " + valueOfTimeFrom);
+
+			    timeTill = document.createElement('h6');
+			    valueOfTimeTill = document.getElementById('timeTillOfSunday').value;
+			    textTimeTill = document.createTextNode(" to: " + valueOfTimeTill);
+			    timeFrom.appendChild(textTimeFrom);
+			    timeTill.appendChild(textTimeTill);
+			    li.appendChild(br);
+			    li.appendChild(timeFrom);
+				li.appendChild(timeTill);
+				document.getElementById('timeFromOfSunday').value = "";
+				document.getElementById('timeTillOfSunday').value = "";
+			}
 		    toLocalOfSunday();
 		}
 		//Take data from LocalStorage
@@ -1382,21 +1622,17 @@
 		       	};
 		       		document.getElementById('divOfBeginNewWeek').style.cssText =
 					`
-					
 					display: none;
 					z-index: -1111;
 					visibility: hidden;
-					
 					`;
 		    }
 		    document.getElementById("beginNewWeekNo").onclick = function(){
 		    		document.getElementById('divOfBeginNewWeek').style.cssText =
 					`
-					
 					display: none;
 					z-index: -1111;
 					visibility: hidden;
-					
 					`;
 		    }
 		};	
