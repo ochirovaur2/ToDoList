@@ -366,9 +366,9 @@
 	   			<input class="inputOfText" type="text" placeholder="Type here..." id="toDoEl">
 				<span class="addBtn" onclick="newElement()">Click</span>
 				<p class="time">
-					From: 
+					 
 					<input type="time" name="" id="timeFromOfMonday" class="inputOfTime">
-					to:
+					-
 					<input type="time" name="" id="timeTillOfMonday" class="inputOfTime">
 				<p>
 			</div>
@@ -388,9 +388,9 @@
 				<span class="addBtn" onclick="newElementOfTuesday()">Click</span>
 				
 					<p class="time">
-						From:  
+						 
 						<input type="time" name="" id="timeFromOfTuesday" class="inputOfTime">
-						to:
+						-	
 						<input type="time" name="" id="timeTillOfTuesday" class="inputOfTime">
 					</p>
 				
@@ -409,9 +409,9 @@
 	   			<input class="inputOfText" type="text" placeholder="Type here..." id="toDoElOfWednesday">
 				<span class="addBtn" onclick="newElementOfWednesday()">Click</span>
 				<p class="time">
-					From:  
+					
 					<input type="time" name="" id="timeFromOfWednasday" class="inputOfTime">
-					to:
+					-
 					<input type="time" name="" id="timeTillOfWednasday" class="inputOfTime">
 				<p>
 			</div>
@@ -429,9 +429,9 @@
 	   			<input class="inputOfText" type="text" placeholder="Type here..." id="toDoElOfThursday">
 				<span class="addBtn" onclick="newElementOfThursday()">Click</span>
 				<p class="time">
-					From: 
+					 
 					<input type="time" name="" id="timeFromOfThursday" class="inputOfTime">
-					to:
+					-
 					<input type="time" name="" id="timeTillOfThursday" class="inputOfTime">
 				<p>
 			</div>
@@ -449,9 +449,9 @@
 	   			<input class="inputOfText" type="text" placeholder="Type here..." id="toDoElOfFriday">
 				<span class="addBtn" onclick="newElementOfFriday()">Click</span>
 				<p class="time">
-					From:  
+					 
 					<input type="time" name="" id="timeFromOfFriday" class="inputOfTime">
-					to:
+					-
 					<input type="time" name="" id="timeTillOfFriday" class="inputOfTime">
 				<p>
 			</div>
@@ -469,9 +469,9 @@
 	   			<input class="inputOfText" type="text" placeholder="Type here..." id="toDoElOfSaturday">
 				<span class="addBtn" onclick="newElementOfSaturday()">Click</span>
 				<p class="time">
-					From: 
+					 
 					<input type="time" name="" id="timeFromOfSaturday" class="inputOfTime">
-					to:
+					-
 					<input type="time" name="" id="timeTillOfSaturday" class="inputOfTime">
 				<p>
 			</div>
@@ -489,9 +489,9 @@
 	   			<input class="inputOfText" type="text" placeholder="Type here..." id="toDoElOfSunday">
 				<span class="addBtn" onclick="newElementOfSunday()">Click</span>
 				<p class="time">
-					From: 
+					 
 					<input type="time" name="" id="timeFromOfSunday" class="inputOfTime">
-					to:
+					-
 					<input type="time" name="" id="timeTillOfSunday" class="inputOfTime">
 				<p>
 			</div>
@@ -836,11 +836,11 @@
 		    if((document.getElementById('timeFromOfMonday').value) && (document.getElementById('timeTillOfMonday').value)){
 			    timeFrom = document.createElement('h6');
 			    valueOfTimeFrom = document.getElementById('timeFromOfMonday').value;
-			    textTimeFrom = document.createTextNode("From: " + valueOfTimeFrom);
+			    textTimeFrom = document.createTextNode(valueOfTimeFrom);
 
 			    timeTill = document.createElement('h6');
 			    valueOfTimeTill = document.getElementById('timeTillOfMonday').value;
-			    textTimeTill = document.createTextNode(" to: " + valueOfTimeTill);
+			    textTimeTill = document.createTextNode(" - " + valueOfTimeTill);
 			    timeFrom.appendChild(textTimeFrom);
 			    timeTill.appendChild(textTimeTill);
 			    li.appendChild(br);
@@ -876,11 +876,11 @@
 		    if((document.getElementById('timeFromOfTuesday').value) && (document.getElementById('timeTillOfTuesday').value)){
 			    timeFrom = document.createElement('h6');
 			    valueOfTimeFrom = document.getElementById('timeFromOfTuesday').value;
-			    textTimeFrom = document.createTextNode("From: " + valueOfTimeFrom);
+			    textTimeFrom = document.createTextNode(valueOfTimeFrom);
 
 			    timeTill = document.createElement('h6');
 			    valueOfTimeTill = document.getElementById('timeTillOfTuesday').value;
-			    textTimeTill = document.createTextNode(" to: " + valueOfTimeTill);
+			    textTimeTill = document.createTextNode(" - " + valueOfTimeTill);
 			    timeFrom.appendChild(textTimeFrom);
 			    timeTill.appendChild(textTimeTill);
 			    li.appendChild(br);
@@ -915,11 +915,11 @@
 		    if((document.getElementById('timeFromOfWednasday').value) && (document.getElementById('timeTillOfWednasday').value)){
 			    timeFrom = document.createElement('h6');
 			    valueOfTimeFrom = document.getElementById('timeFromOfWednasday').value;
-			    textTimeFrom = document.createTextNode("From: " + valueOfTimeFrom);
+			    textTimeFrom = document.createTextNode(valueOfTimeFrom);
 
 			    timeTill = document.createElement('h6');
 			    valueOfTimeTill = document.getElementById('timeTillOfWednasday').value;
-			    textTimeTill = document.createTextNode(" to: " + valueOfTimeTill);
+			    textTimeTill = document.createTextNode(" - " + valueOfTimeTill);
 			    timeFrom.appendChild(textTimeFrom);
 			    timeTill.appendChild(textTimeTill);
 			    li.appendChild(br);
@@ -954,11 +954,11 @@
 		    if((document.getElementById('timeFromOfThursday').value) && (document.getElementById('timeTillOfThursday').value)){
 			    timeFrom = document.createElement('h6');
 			    valueOfTimeFrom = document.getElementById('timeFromOfThursday').value;
-			    textTimeFrom = document.createTextNode("From: " + valueOfTimeFrom);
+			    textTimeFrom = document.createTextNode(valueOfTimeFrom);
 
 			    timeTill = document.createElement('h6');
 			    valueOfTimeTill = document.getElementById('timeTillOfThursday').value;
-			    textTimeTill = document.createTextNode(" to: " + valueOfTimeTill);
+			    textTimeTill = document.createTextNode(" - " + valueOfTimeTill);
 			    timeFrom.appendChild(textTimeFrom);
 			    timeTill.appendChild(textTimeTill);
 			    li.appendChild(br);
@@ -993,11 +993,11 @@
 		    if((document.getElementById('timeFromOfFriday').value) && (document.getElementById('timeTillOfFriday').value)){
 			    timeFrom = document.createElement('h6');
 			    valueOfTimeFrom = document.getElementById('timeFromOfFriday').value;
-			    textTimeFrom = document.createTextNode("From: " + valueOfTimeFrom);
+			    textTimeFrom = document.createTextNode(valueOfTimeFrom);
 
 			    timeTill = document.createElement('h6');
 			    valueOfTimeTill = document.getElementById('timeTillOfFriday').value;
-			    textTimeTill = document.createTextNode(" to: " + valueOfTimeTill);
+			    textTimeTill = document.createTextNode(" - " + valueOfTimeTill);
 			    timeFrom.appendChild(textTimeFrom);
 			    timeTill.appendChild(textTimeTill);
 			    li.appendChild(br);
@@ -1032,11 +1032,11 @@
 		    if((document.getElementById('timeFromOfSaturday').value) && (document.getElementById('timeTillOfSaturday').value)){
 			    timeFrom = document.createElement('h6');
 			    valueOfTimeFrom = document.getElementById('timeFromOfSaturday').value;
-			    textTimeFrom = document.createTextNode("From: " + valueOfTimeFrom);
+			    textTimeFrom = document.createTextNode(valueOfTimeFrom);
 
 			    timeTill = document.createElement('h6');
 			    valueOfTimeTill = document.getElementById('timeTillOfSaturday').value;
-			    textTimeTill = document.createTextNode(" to: " + valueOfTimeTill);
+			    textTimeTill = document.createTextNode(" - " + valueOfTimeTill);
 			    timeFrom.appendChild(textTimeFrom);
 			    timeTill.appendChild(textTimeTill);
 			    li.appendChild(br);
@@ -1071,11 +1071,11 @@
 		    if((document.getElementById('timeFromOfSunday').value) && (document.getElementById('timeTillOfSunday').value)){
 			    timeFrom = document.createElement('h6');
 			    valueOfTimeFrom = document.getElementById('timeFromOfSunday').value;
-			    textTimeFrom = document.createTextNode("From: " + valueOfTimeFrom);
+			    textTimeFrom = document.createTextNode(valueOfTimeFrom);
 
 			    timeTill = document.createElement('h6');
 			    valueOfTimeTill = document.getElementById('timeTillOfSunday').value;
-			    textTimeTill = document.createTextNode(" to: " + valueOfTimeTill);
+			    textTimeTill = document.createTextNode(" - " + valueOfTimeTill);
 			    timeFrom.appendChild(textTimeFrom);
 			    timeTill.appendChild(textTimeTill);
 			    li.appendChild(br);
