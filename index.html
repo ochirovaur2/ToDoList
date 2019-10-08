@@ -151,7 +151,7 @@
 		    padding: 4px 0px 4px 0px;
 			
 		    color: black;
-		    background: #FECA00;
+		    background: #fff;
 		    line-height: 3vh;
 		    
 		    
@@ -163,9 +163,9 @@
 		    border: 1px solid white;
 		}
 
-		ul li:nth-child(odd) {
+		ul li:nth-child(even) {
 
-		    background: #FECA00;
+		    background: #d0d0d0;
 		}
 
 		ul li:hover {
@@ -176,7 +176,7 @@
 		    
 		    border: 1px solid  #00ff19;
 		    text-decoration: line-through;
-		    background-color: #fff;
+		    background-color: #FECA00;
 		}
 		ul li.checked::before {
 		    content: '';
@@ -667,6 +667,15 @@
 				
 				`
 				;}
+				var h3 = document.getElementsByTagName('h3');
+				for (var i = 0; i < h3.length; i++) {
+					h3[i].style.cssText =
+				`
+				
+				font-size:5vh;
+				
+				`
+				;}
 
 				
 				
@@ -770,6 +779,15 @@
 					time[i].style.cssText =
 				`
 				display: none;
+				
+				`
+				;}
+				var h3 = document.getElementsByTagName('h3');
+				for (var i = 0; i < h3.length; i++) {
+					h3[i].style.cssText =
+				`
+				
+				font-size: 3.5vh;
 				
 				`
 				;}
